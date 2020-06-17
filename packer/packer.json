@@ -1,0 +1,33 @@
+{
+  "variables": {
+    "access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}"
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "ami_name": "buddy-ci-example-{{timestamp}}",
+    "access_key": "{{user `access_key`}}",
+    "secret_key": "{{user `secret_key`}}",
+    "region": "us-east-1",
+    "source_ami": "ami-fce3c696",
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+    "ami_description": "This is the backend API AMI",
+    "tags": {
+        "OS_Version": "Ubuntu",
+        "Purpose": "Buddy CI Example",
+        "Base_AMI_Name": "{{ .SourceAMIName }}"
+    }
+  }],
+    "provisioners": [
+    {
+      "type": "file",
+      "source": ".",
+      "destination": "/home/ubuntu/"
+    },
+    {
+      "type": "shell",
+      "inline": ["sudo chmod +x /home/ubuntu/packer/setup.sh && sudo /bin/bash -c /home/ubuntu/packer/setup.sh"]
+    }
+  ]
+}
