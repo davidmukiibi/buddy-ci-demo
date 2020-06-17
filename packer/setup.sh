@@ -17,10 +17,6 @@ npm_install() {
     sudo npm install
 }
 
-gulp_sass() {
-    sudo gulp sass
-}
-
 install_python() {
     sudo apt purge python-pip python3-pip -y
     sudo rm -rf /usr/local/lib/python2.7/dist-packages/pip
@@ -89,23 +85,13 @@ start_supervisor() {
 
 main() {
     install_nodejs
-
     npm_install
-
-    gulp_sass
-
     install_python
-
     install_supervisor
-
     setup_supervisor_script
-
     touch_config_file
-
     copy_start_script
-
     write_supervisor_conf
-
     install_application_requirements
 }
 

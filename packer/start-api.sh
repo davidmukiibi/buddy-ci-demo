@@ -14,7 +14,6 @@ run_application_start_command() {
 
 main() {
     export_env_variables
-
     run_application_start_command
 }
 
