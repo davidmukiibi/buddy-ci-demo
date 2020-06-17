@@ -51,8 +51,9 @@ touch_config_file() {
     sudo touch /etc/supervisor/conf.d/api.conf
 }
 
-copy_start_script() {
-    sudo chmod +x packer/start.sh
+start_script() {
+    sudo chmod +x packer/start-api.sh
+    sudo chmod +x packer/start-frontend.sh
 }
 
 write_supervisor_conf() {
@@ -90,7 +91,7 @@ main() {
     install_supervisor
     setup_supervisor_script
     touch_config_file
-    copy_start_script
+    start_script
     write_supervisor_conf
     install_application_requirements
 }
