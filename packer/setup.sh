@@ -61,8 +61,15 @@ copy_start_script() {
 
 write_supervisor_conf() {
   sudo cat <<EOF > /etc/supervisor/conf.d/buddy.conf
-[program:app]
-command=/bin/bash packer/start.sh
+[program:api]
+command=/bin/bash packer/start-api.sh
+directory=/home/ubuntu
+autostart=true
+autorestart=true
+startretries=3
+
+[program:frontend]
+command=/bin/bash packer/start-frontend.sh
 directory=/home/ubuntu
 autostart=true
 autorestart=true
