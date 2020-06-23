@@ -49,12 +49,12 @@
 #     trigger_condition: "ALWAYS"
 #     shell: "SH"
 
-  - action: "Execute: packer build"
-    type: "BUILD"
-    docker_image_name: "mukiibi/buddy-ci-image"
-    docker_image_tag: "v2"
-    execute_commands:
-    - "/packer build packer/packer.json"
+#   - action: "Execute: packer build"
+#     type: "BUILD"
+#     docker_image_name: "mukiibi/buddy-ci-image"
+#     docker_image_tag: "v2"
+#     execute_commands:
+#     - "/packer build packer/packer.json"
 
   - action: "Execute: terraform plan"
     type: "BUILD"
