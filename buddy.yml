@@ -30,8 +30,7 @@
     execute_commands:
     - "pip install cryptography setuptools==45 selenium"
     - "pip install -r requirements.txt"
-    - "python -m pytest tests/"
-    # - "pytest"
+    - "nosetests --with-coverage --cover-package=bucketlist"
     setup_commands:
     - "apt-get update && apt-get install -y python-pytest"
     # - "pip install cryptography setuptools==45"
