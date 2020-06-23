@@ -49,9 +49,6 @@
     trigger_condition: "ALWAYS"
     shell: "SH"
 
-
-
-
 #   - action: "Execute: packer build"
 #     type: "BUILD"
 #     docker_image_name: "mukiibi/buddy-ci-image"
