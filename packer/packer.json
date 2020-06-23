@@ -15,7 +15,7 @@
     "ami_description": "This is the buddy AMI",
     "tags": {
         "OS_Version": "Ubuntu",
-        "Purpose": "Buddy CI Example",
+        "Purpose": "Buddy CI Example"
     }
   }],
     "provisioners": [
