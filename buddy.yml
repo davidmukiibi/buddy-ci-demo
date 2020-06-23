@@ -14,7 +14,7 @@
     execute_commands:
     - "npm install"
     - "gulp sass"
-    - "npm test"
+    - "npm tes"
     setup_commands:
     - "npm install -g gulp grunt-cli"
     volume_mappings:
