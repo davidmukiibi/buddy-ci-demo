@@ -2,9 +2,8 @@
   trigger_mode: "ON_EVERY_PUSH"
   ref_type: "BRANCH"
   ref_name: "develop"
-  trigger_condition: "ON_CHANGE_AT_PATH"
-  trigger_condition_paths: "."
-#   trigger_condition_paths: "buddy-ci-demo"
+#   trigger_condition: "ON_CHANGE_AT_PATH"
+#   trigger_condition_paths: "."
   actions:
   - action: "Execute: npm test"
     type: "BUILD"
@@ -14,7 +13,7 @@
     execute_commands:
     - "npm install"
     - "gulp sass"
-    - "npm tes"
+    - "npm test"
     setup_commands:
     - "npm install -g gulp grunt-cli"
     volume_mappings:
