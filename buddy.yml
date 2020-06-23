@@ -23,14 +23,15 @@
     shell: "SH"
     # run_next_parallel: true
 
-#   - action: "Execute: python test"
-#     type: "BUILD"
-#     docker_image_name: "library/python"
-#     docker_image_tag: "3.6"
-#     execute_commands:
-#     - "pytest"
-#     setup_commands:
-#     - "pip install -r requirements.txt"
+  - action: "Execute: python test"
+    type: "BUILD"
+    docker_image_name: "library/python"
+    docker_image_tag: "3.6"
+    execute_commands:
+    - "pytest"
+    setup_commands:
+    - "pip install cryptography setuptools==45"
+    - "pip install -r requirements.txt"
 
 #   - action: "Execute: packer build"
 #     type: "BUILD"
