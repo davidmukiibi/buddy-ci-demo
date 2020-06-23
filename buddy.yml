@@ -1,7 +1,7 @@
 - pipeline: "test & deploy"
   trigger_mode: "ON_EVERY_PUSH"
   ref_type: "BRANCH"
-  ref_name: "master"
+  ref_name: "develop"
   trigger_condition: "ON_CHANGE_AT_PATH"
   trigger_condition_paths: "bucketlist-api"
   actions:
