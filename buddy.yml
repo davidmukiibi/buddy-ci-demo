@@ -12,6 +12,7 @@
     docker_image_tag: "10"
     execute_commands:
     - "npm install"
+    - "npm rebuild node-sass"
     - "gulp sass"
     - "npm test"
     setup_commands:
