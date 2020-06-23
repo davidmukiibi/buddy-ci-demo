@@ -16,7 +16,6 @@
     "tags": {
         "OS_Version": "Ubuntu",
         "Purpose": "Buddy CI Example",
-        "Base_AMI_Name": "{{ .SourceAMIName }}"
     }
   }],
     "provisioners": [
