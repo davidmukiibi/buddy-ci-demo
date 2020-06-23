@@ -1,0 +1,51 @@
+- pipeline: "test & deploy"
+  trigger_mode: "ON_EVERY_PUSH"
+  ref_type: "BRANCH"
+  ref_name: "master"
+  trigger_condition: "ON_CHANGE_AT_PATH"
+  trigger_condition_paths: "bucketlist-api"
+  actions:
+  - action: "Execute: npm test"
+    type: "BUILD"
+    docker_image_name: "library/node"
+    docker_image_tag: "latest"
+    execute_commands:
+    - "npm install"
+    - "gulp sass"
+    - "npm test"
+    setup_commands:
+    - "npm install -g gulp grunt-cli"
+
+#   - action: "Execute: python test"
+#     type: "BUILD"
+#     docker_image_name: "library/python"
+#     docker_image_tag: "3.6"
+#     execute_commands:
+#     - "pytest"
+#     setup_commands:
+#     - "pip install -r requirements.txt"
+
+#   - action: "Execute: packer build"
+#     type: "BUILD"
+#     docker_image_name: "mukiibi/buddy-ci-image"
+#     docker_image_tag: "v2"
+#     execute_commands:
+#     - "/packer build packer.json"
+
+#   - action: "Execute: terraform plan"
+#     type: "BUILD"
+#     docker_image_name: "mukiibi/buddy-ci-image"
+#     docker_image_tag: "v2"
+#     execute_commands:
+#     - "terraform plan"
+
+#   - action: "Execute: terraform apply"
+#     type: "BUILD"
+#     docker_image_name: "mukiibi/buddy-ci-image"
+#     docker_image_tag: "v2"
+#     execute_commands:
+#     - "terraform apply -auto-approve"
+
+# - pipeline: "build"
+#   trigger_mode: "ON_EVERY_PUSH"
+#   ref_name: "*"
