@@ -3,7 +3,7 @@
   ref_type: "BRANCH"
   ref_name: "develop"
   trigger_condition: "ON_CHANGE_AT_PATH"
-  trigger_condition_paths: "bucketlist-api"
+  trigger_condition_paths: "buddy-ci-demo"
   actions:
   - action: "Execute: npm test"
     type: "BUILD"
