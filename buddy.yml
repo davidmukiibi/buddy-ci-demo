@@ -61,7 +61,7 @@
     docker_image_name: "mukiibi/buddy-ci-image"
     docker_image_tag: "v2"
     execute_commands:
-    - "/terraform plan"
+    - "cd aws-infrastructure/application/ && /terraform plan"
 
 #   - action: "Execute: terraform apply"
 #     type: "BUILD"
