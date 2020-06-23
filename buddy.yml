@@ -5,23 +5,23 @@
 #   trigger_condition: "ON_CHANGE_AT_PATH"
 #   trigger_condition_paths: "."
   actions:
-#   - action: "Execute: npm test"
-#     type: "BUILD"
-#     working_directory: "/buddy/buddy-ci-demo"
-#     docker_image_name: "library/node"
-#     docker_image_tag: "10"
-#     execute_commands:
-#     - "npm install"
-#     - "npm rebuild node-sass"
-#     - "gulp sass"
-#     - "npm test"
-#     setup_commands:
-#     - "npm install -g gulp grunt-cli"
-#     volume_mappings:
-#     - "/:/buddy/buddy-ci-demo"
-#     trigger_condition: "ALWAYS"
-#     shell: "SH"
-#     run_next_parallel: true
+  - action: "Execute: npm test"
+    type: "BUILD"
+    working_directory: "/buddy/buddy-ci-demo"
+    docker_image_name: "library/node"
+    docker_image_tag: "10"
+    execute_commands:
+    - "npm install"
+    - "npm rebuild node-sass"
+    - "gulp sass"
+    - "npm test"
+    setup_commands:
+    - "npm install -g gulp grunt-cli"
+    volume_mappings:
+    - "/:/buddy/buddy-ci-demo"
+    trigger_condition: "ALWAYS"
+    shell: "SH"
+    run_next_parallel: true
 
   - action: "Execute: python test"
     type: "BUILD"
@@ -49,13 +49,12 @@
     trigger_condition: "ALWAYS"
     shell: "SH"
 
-
-#   - action: "Execute: packer build"
-#     type: "BUILD"
-#     docker_image_name: "mukiibi/buddy-ci-image"
-#     docker_image_tag: "v2"
-#     execute_commands:
-#     - "/packer build packer.json"
+  - action: "Execute: packer build"
+    type: "BUILD"
+    docker_image_name: "mukiibi/buddy-ci-image"
+    docker_image_tag: "v2"
+    execute_commands:
+    - "/packer build packer.json"
 
 #   - action: "Execute: terraform plan"
 #     type: "BUILD"
