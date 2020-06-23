@@ -21,6 +21,7 @@
     - "/:/buddy/buddy-ci-demo"
     trigger_condition: "ALWAYS"
     shell: "SH"
+    # run_next_parallel: true
 
 #   - action: "Execute: python test"
 #     type: "BUILD"
