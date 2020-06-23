@@ -9,7 +9,7 @@
   - action: "Execute: npm test"
     type: "BUILD"
     docker_image_name: "library/node"
-    docker_image_tag: "latest"
+    docker_image_tag: "10"
     execute_commands:
     - "npm install"
     - "gulp sass"
