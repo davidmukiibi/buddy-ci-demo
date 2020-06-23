@@ -8,8 +8,8 @@
   actions:
   - action: "Execute: npm test"
     type: "BUILD"
-    docker_image_name: "mukiibi/node"
-    docker_image_tag: "10"
+    docker_image_name: "library/node"
+    docker_image_tag: "10.21.0-jessie"
     execute_commands:
     - "npm install"
     - "gulp sass"
