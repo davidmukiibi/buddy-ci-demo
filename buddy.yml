@@ -31,7 +31,8 @@
     - "pip install cryptography setuptools==45"
     - "pip install -r requirements.txt"
     - "pytest"
-    # setup_commands:
+    setup_commands:
+    - "apt-get update && apt-get install -y python-pytest"
     # - "pip install cryptography setuptools==45"
     # - "pip install -r requirements.txt"
 
