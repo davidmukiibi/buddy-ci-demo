@@ -61,7 +61,9 @@
     docker_image_name: "mukiibi/buddy-ci-image"
     docker_image_tag: "v2"
     execute_commands:
-    - "cd aws-infrastructure/application/ && TOKEN=$TOKEN /terraform init && TOKEN=$TOKEN /terraform plan"
+    - "sudo mkdir ~/.terraform.d/"
+    - "sudo echo $TOKEN > ~/.terraform.d/credentials.tfrc.json"
+    - "cd aws-infrastructure/application/ && /terraform init && /terraform plan"
 
 #   - action: "Execute: terraform apply"
 #     type: "BUILD"
