@@ -2,15 +2,12 @@ provider "aws" {
   region = "us-east-1"
 }
 
-variable "TOKEN" {}
-
 terraform {
   backend "remote" {
     organization = "mukiibi"
     workspaces {
       name = "buddy-ci-workspace"
     }
-    token = var.TOKEN
   }
 }
 
