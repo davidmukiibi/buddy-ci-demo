@@ -3,11 +3,31 @@
 set -e
 set -o pipefail
 
+install_postgresql() {
+    export DEBIAN_FRONTEND=noninteractive && \
+    apt-get update && \
+    apt-get install -y lsb-release gnupg2 wget && \
+    apt-get clean all && \
+    sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && \
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - && \
+    apt-get update && \
+    apt-get install postgresql-12 -y
+}
+
+create_database_user() {
+    # /etc/init.d/postgresql start
+    pg_ctlcluster 12 main start
+    su postgres && \
+    psql -U postgres -w --command "CREATE USER buddy WITH SUPERUSER PASSWORD 'buddypassword';" \
+                        --command "CREATE DATABASE buddydb;" \
+                        --command "GRANT ALL PRIVILEGES ON DATABASE buddydb TO buddy;"
+}
+
 install_nodejs() {
     sudo apt-get update
-    apt-get install curl -y
+    apt-get install curl gcc g++ make -y
     sudo curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
-    sudo apt-get install gcc g++ make -y
+    # sudo apt-get install gcc g++ make -y
     sudo apt-get install -y nodejs
     node --version
 }
@@ -94,6 +114,18 @@ main() {
     start_script
     write_supervisor_conf
     install_application_requirements
+    install_postgresql
+    create_database_user
 }
 
 main "$@"
+
+
+
+
+
+
+
+
+
+
