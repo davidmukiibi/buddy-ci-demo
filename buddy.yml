@@ -51,27 +51,38 @@
 
   - action: "Execute: packer build"
     type: "BUILD"
+    working_directory: "/buddy/buddy-ci-demo"
     docker_image_name: "mukiibi/buddy-ci-image"
     docker_image_tag: "v2"
     execute_commands:
     - "/packer build packer/packer.json"
+    volume_mappings:
+    - "/:/buddy/buddy-ci-demo"
+    trigger_condition: "ALWAYS"
+    shell: "SH"
 
   - action: "Execute: terraform plan"
     type: "BUILD"
+    working_directory: "/buddy/buddy-ci-demo"
     docker_image_name: "mukiibi/buddy-ci-image"
     docker_image_tag: "v2"
     execute_commands:
     - "sudo mkdir ~/.terraform.d/"
     - "sudo echo $TOKEN > ~/.terraform.d/credentials.tfrc.json"
     - "cd aws-infrastructure/application/ && /terraform init && /terraform plan"
+    volume_mappings:
+    - "/:/buddy/buddy-ci-demo"
+    trigger_condition: "ALWAYS"
+    shell: "SH"
 
-#   - action: "Execute: terraform apply"
-#     type: "BUILD"
-#     docker_image_name: "mukiibi/buddy-ci-image"
-#     docker_image_tag: "v2"
-#     execute_commands:
-#     - "terraform apply -auto-approve"
-
-# - pipeline: "build"
-#   trigger_mode: "ON_EVERY_PUSH"
-#   ref_name: "*"
+  - action: "Execute: terraform apply"
+    type: "BUILD"
+    working_directory: "/buddy/buddy-ci-demo"
+    docker_image_name: "mukiibi/buddy-ci-image"
+    docker_image_tag: "v2"
+    execute_commands:
+    - "cd aws-infrastructure/application/ && /terraform apply -auto-approve"
+    volume_mappings:
+    - "/:/buddy/buddy-ci-demo"
+    trigger_condition: "ALWAYS"
+    shell: "SH"
