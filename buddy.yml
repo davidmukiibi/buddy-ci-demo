@@ -67,7 +67,7 @@
     docker_image_name: "mukiibi/buddy-ci-image"
     docker_image_tag: "v2"
     execute_commands:
-    - "sudo mkdir ~/.terraform.d/"
+    - "mkdir ~/.terraform.d/"
     - "sudo echo $TOKEN > ~/.terraform.d/credentials.tfrc.json"
     - "cd aws-infrastructure/application/ && /terraform init && /terraform plan"
     volume_mappings:
@@ -81,7 +81,7 @@
     docker_image_name: "mukiibi/buddy-ci-image"
     docker_image_tag: "v2"
     execute_commands:
-    - "sudo mkdir ~/.terraform.d/"
+    - "mkdir ~/.terraform.d/"
     - "sudo echo $TOKEN > ~/.terraform.d/credentials.tfrc.json"
     - "cd aws-infrastructure/application/ && /terraform apply -auto-approve"
     volume_mappings:
